@@ -7,7 +7,7 @@ import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, Ex
 
 const videos = [
   {
-    title: "Tpresenting at Undoing Aginghe biochemical drama of aging",
+    title: "Presenting at Undoing Aging ",
     id: "JUZBOueVkEM" 
   },
   {
