@@ -1,9 +1,33 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ShoppingCart } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote } from 'lucide-react';
 
-// --- ДАННЫЕ (Обновленные SEO-тексты) ---
+// --- ДАННЫЕ: ОТЗЫВЫ (TESTIMONIALS) ---
+const testimonials = [
+  {
+    name: "Aubrey D.N.J. de Grey",
+    role: "Ph.D., Chairman and Chief Science Officer of the Methuselah Foundation",
+    text: "Shchepinov is a true biomedical groundbreaker. His insight, now dating back over 20 years, that the isotope effect might have medical utility was so outlandish that even I was initially inclined to dismiss it. How glad I am that I put my doubts aside! In this book, Shchepinov presents the idea and its development in a form that should be easily digestible. Its time has come!"
+  },
+  {
+    name: "Barry Halliwell",
+    role: "Chairman, Biomedical Advisory Council (BMAC), Agency for Science, Technology and Research (A*STAR)",
+    text: "Lipid peroxidation is a fundamental mechanism of oxidative damage that has been studied for over 100 years. The recent discovery of ferroptosis has re-awakened interest in iron and lipid peroxidation. In this amusing, provocative and sometimes iconoclastic book, Misha Shchepinov explores the role of fatty acids, lipid peroxidation and iron in human health and disease. It is a good read, I recommend it."
+  },
+  {
+    name: "Charles R. Cantor",
+    role: "American molecular geneticist",
+    text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise. The book is a charming mixture of science and author's personal recollections."
+  },
+  {
+    name: "J. Thomas Brenna",
+    role: "Ph.D., Professor of Pediatrics, of Chemistry, and of Human Nutrition at the Dell Medical School",
+    text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword driving the fire of life — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach to taming one of aging's most insidious culprits."
+  }
+];
+
+// --- ДАННЫЕ: ГЛАВЫ ---
 const chapters = [
   { 
     title: "Chain reaction: a portrait in oils", 
@@ -31,8 +55,8 @@ const chapters = [
 
 const Section = ({ title, children, className = "", id = "" }: { title: string, children: React.ReactNode, className?: string, id?: string }) => (
   <section id={id} className={`py-20 px-6 md:px-20 ${className}`}>
-    <div className="max-w-4xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-serif text-slate-900 mb-10 border-b pb-4 border-slate-200">
+    <div className="max-w-6xl mx-auto">
+      <h2 className="text-3xl md:text-4xl font-serif text-slate-900 mb-12 border-b pb-4 border-slate-200">
         {title}
       </h2>
       {children}
@@ -75,14 +99,14 @@ export default function BookWebsite() {
           <nav className="hidden md:flex space-x-8 text-sm font-medium text-slate-600 uppercase tracking-wider">
             <a href="#book" className="hover:text-blue-800 transition">The Book</a>
             <a href="#science" className="hover:text-blue-800 transition">The Science</a>
-            <a href="#toc" className="hover:text-blue-800 transition">Contents</a>
+            <a href="#reviews" className="hover:text-blue-800 transition">Reviews</a>
             <a href="#author" className="hover:text-blue-800 transition">Author</a>
           </nav>
         </div>
       </header>
 
       {/* HERO SECTION */}
-      <section className="pt-40 pb-20 px-6">
+      <section id="book" className="pt-40 pb-20 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <span className="inline-block px-3 py-1 bg-blue-100 text-blue-900 text-xs font-bold tracking-widest uppercase mb-6 rounded-full">
@@ -114,14 +138,13 @@ export default function BookWebsite() {
                   alt="Breaking the Chains of Aging Book Cover" 
                   className="w-full h-auto object-cover"
                 />
-                {/* Shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none"></div>
              </div>
           </div>
         </div>
       </section>
 
-      {/* THE PROBLEM (SCIENTIFIC SUMMARY) */}
+      {/* THE PROBLEM */}
       <Section title="The Oxidative Paradox" className="bg-white" id="science">
         <div className="grid md:grid-cols-2 gap-10">
           <div className="text-lg leading-relaxed text-slate-700">
@@ -159,10 +182,35 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* TABLE OF CONTENTS (INTERACTIVE) */}
+      {/* TESTIMONIALS (NEW SECTION) */}
+      <Section title="Praise for the Book" id="reviews" className="bg-slate-50">
+        <div className="grid md:grid-cols-2 gap-8">
+          {testimonials.map((t, idx) => (
+            <div key={idx} className="bg-white p-8 rounded border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-blue-900 text-blue-100 flex items-center justify-center font-serif text-lg font-bold flex-shrink-0">
+                  {t.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-slate-900 text-lg">{t.name}</h4>
+                  <p className="text-xs text-blue-800 uppercase tracking-widest font-medium mt-1 leading-tight">{t.role}</p>
+                </div>
+              </div>
+              <div className="relative">
+                <Quote size={24} className="text-slate-200 absolute -top-2 -left-2 -z-10" />
+                <p className="text-slate-600 italic text-sm leading-relaxed">
+                  "{t.text}"
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* TABLE OF CONTENTS */}
       <Section title="Table of Contents" id="toc">
         <p className="mb-8 text-slate-500 italic">Selected chapters from the book. Click to preview.</p>
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           {chapters.map((chapter, idx) => (
             <AccordionItem key={idx} title={chapter.title} desc={chapter.desc} />
           ))}
@@ -199,7 +247,7 @@ export default function BookWebsite() {
 
       {/* FOOTER */}
       <footer className="bg-white py-10 border-t border-slate-200 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Breaking the Chains of Aging.</p>
+        <p>&copy; 2026 Lipid Aging. All rights reserved.</p>
         <p className="mt-2">Contact: info@breakingaging.com</p>
       </footer>
 
