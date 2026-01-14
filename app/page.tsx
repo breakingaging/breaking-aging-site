@@ -3,27 +3,35 @@
 import React from 'react';
 import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote } from 'lucide-react';
 
-// --- ДАННЫЕ: ОТЗЫВЫ (TESTIMONIALS) ---
+// --- ДАННЫЕ: ОТЗЫВЫ (С ФОТО) ---
 const testimonials = [
   {
     name: "Aubrey D.N.J. de Grey",
     role: "Ph.D., Chairman and Chief Science Officer of the Methuselah Foundation",
+    // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО ОБРИ ДИ ГРЕЯ:
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Aubrey_de_Grey_2010.jpg/640px-Aubrey_de_Grey_2010.jpg", 
     text: "Shchepinov is a true biomedical groundbreaker. His insight, now dating back over 20 years, that the isotope effect might have medical utility was so outlandish that even I was initially inclined to dismiss it. How glad I am that I put my doubts aside! In this book, Shchepinov presents the idea and its development in a form that should be easily digestible. Its time has come!"
   },
   {
     name: "Barry Halliwell",
-    role: "Chairman, Biomedical Advisory Council (BMAC), Agency for Science, Technology and Research (A*STAR)",
-    text: "Lipid peroxidation is a fundamental mechanism of oxidative damage that has been studied for over 100 years. The recent discovery of ferroptosis has re-awakened interest in iron and lipid peroxidation. In this amusing, provocative and sometimes iconoclastic book, Misha Shchepinov explores the role of fatty acids, lipid peroxidation and iron in human health and disease. It is a good read, I recommend it."
+    role: "Chairman, Biomedical Advisory Council (BMAC), A*STAR",
+    // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО БАРРИ:
+    image: "https://www.nuhs.edu.sg/wsu/PublishingImages/bio/Prof%20Barry%20Halliwell.jpg",
+    text: "Lipid peroxidation is a fundamental mechanism of oxidative damage that has been studied for over 100 years. The recent discovery of ferroptosis has re-awakened interest in iron and lipid peroxidation. In this amusing, provocative and sometimes iconoclastic book, Misha Shchepinov explores the role of fatty acids. It is a good read, I recommend it."
   },
   {
     name: "Charles R. Cantor",
-    role: "American molecular geneticist",
-    text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise. The book is a charming mixture of science and author's personal recollections."
+    role: "American molecular geneticist, CSO at Sequenom",
+    // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО ЧАРЛЬЗА:
+    image: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Charles_Cantor.jpg",
+    text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise."
   },
   {
     name: "J. Thomas Brenna",
-    role: "Ph.D., Professor of Pediatrics, of Chemistry, and of Human Nutrition at the Dell Medical School",
-    text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword driving the fire of life — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach to taming one of aging's most insidious culprits."
+    role: "Ph.D., Professor of Pediatrics, Chemistry, and Human Nutrition",
+    // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО ТОМАСА:
+    image: "https://dellmed.utexas.edu/sites/default/files/styles/1_1_square_sm/public/2022-03/Brenna-Tom-400x400.jpg", 
+    text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach."
   }
 ];
 
@@ -182,23 +190,26 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* TESTIMONIALS (NEW SECTION) */}
+      {/* TESTIMONIALS (WITH PHOTOS) */}
       <Section title="Praise for the Book" id="reviews" className="bg-slate-50">
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
           {testimonials.map((t, idx) => (
-            <div key={idx} className="bg-white p-8 rounded border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-blue-900 text-blue-100 flex items-center justify-center font-serif text-lg font-bold flex-shrink-0">
-                  {t.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                </div>
+            <div key={idx} className="bg-white p-8 rounded border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative">
+              <div className="flex items-center gap-5 mb-6">
+                {/* PORTRAIT */}
+                <img 
+                  src={t.image} 
+                  alt={t.name}
+                  className="w-20 h-20 rounded-full object-cover border-4 border-slate-100 shadow-sm flex-shrink-0 bg-slate-200"
+                />
                 <div>
-                  <h4 className="font-serif font-bold text-slate-900 text-lg">{t.name}</h4>
-                  <p className="text-xs text-blue-800 uppercase tracking-widest font-medium mt-1 leading-tight">{t.role}</p>
+                  <h4 className="font-serif font-bold text-slate-900 text-lg leading-tight">{t.name}</h4>
+                  <p className="text-xs text-blue-800 uppercase tracking-widest font-medium mt-2 leading-relaxed opacity-80">{t.role}</p>
                 </div>
               </div>
               <div className="relative">
-                <Quote size={24} className="text-slate-200 absolute -top-2 -left-2 -z-10" />
-                <p className="text-slate-600 italic text-sm leading-relaxed">
+                <Quote size={24} className="text-blue-100 absolute -top-2 -left-2 -z-10" />
+                <p className="text-slate-600 italic text-sm leading-relaxed pl-2">
                   "{t.text}"
                 </p>
               </div>
