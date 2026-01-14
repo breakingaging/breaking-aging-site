@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2 } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, ExternalLink } from 'lucide-react';
 
-// --- ДАННЫЕ: ОТЗЫВЫ (С ВАШИМИ ФОТО) ---
+// --- ДАННЫЕ: ОТЗЫВЫ ---
 const testimonials = [
   {
     name: "Aubrey D.N.J. de Grey",
@@ -88,6 +88,19 @@ const AccordionItem = ({ title, desc }: { title: string, desc: string }) => {
   );
 };
 
+// Компонент для ссылок в тексте
+const WikiLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
+  <a 
+    href={href} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="text-blue-700 underline decoration-1 underline-offset-2 hover:text-blue-900 hover:bg-blue-50 transition-colors"
+    title="Read more on Wikipedia"
+  >
+    {children}
+  </a>
+);
+
 // --- ГЛАВНАЯ СТРАНИЦА ---
 
 export default function BookWebsite() {
@@ -102,9 +115,9 @@ export default function BookWebsite() {
           </div>
           <nav className="hidden md:flex space-x-8 text-sm font-medium text-slate-600 uppercase tracking-wider">
             <a href="#book" className="hover:text-blue-800 transition">The Book</a>
-            <a href="#concepts" className="hover:text-blue-800 transition">Key Concepts</a>
+            <a href="#prologue" className="hover:text-blue-800 transition">Prologue</a>
+            <a href="#concepts" className="hover:text-blue-800 transition">Concepts</a>
             <a href="#reviews" className="hover:text-blue-800 transition">Reviews</a>
-            <a href="#author" className="hover:text-blue-800 transition">Author</a>
           </nav>
         </div>
       </header>
@@ -148,10 +161,60 @@ export default function BookWebsite() {
         </div>
       </section>
 
-      {/* KEY CONCEPTS (REPLACED SECTION) */}
+      {/* PROLOGUE (NEW STORY SECTION) */}
+      <Section title="Prologue: A Tale of Two Oils" id="prologue" className="bg-stone-50">
+        <div className="prose prose-lg prose-slate max-w-none font-serif leading-loose">
+          <p>
+            At a BBQ party in Texas, you drizzle a little <WikiLink href="https://en.wikipedia.org/wiki/Vegetable_oil">vegetable oil</WikiLink> into 
+            a salad bowl, but, distracted by a burst of laughter, leave the uncapped bottle on the table. 
+            The party is such a success that the cleanup only starts three days later in the evening, 
+            as the punishing Texan sun loosens its grip.
+          </p>
+          <p>
+            The <WikiLink href="https://en.wikipedia.org/wiki/Rancidification">rancid</WikiLink> stench 
+            now rising from the bottle is so vile that even your dog recoils in disgust. The oil seems 
+            not to have taken the sun and air at all well. You pick a screwcap and seal the bottle tight, with relief.
+          </p>
+          <p>
+            Let’s relocate into a Flemish painter’s studio, 1525 AD. Vivid pigments are ground 
+            into <WikiLink href="https://en.wikipedia.org/wiki/Linseed_oil">flax oil</WikiLink> and 
+            brushed onto canvas. Within days the air oxidizes the oil into a <WikiLink href="https://en.wikipedia.org/wiki/Drying_oil">hard lacquer layer</WikiLink>, 
+            locking the fine colourful grains in place for centuries. Fast-forward 500 years, and 
+            audiences are still spellbound by the panorama of <WikiLink href="https://en.wikipedia.org/wiki/View_of_Delft">Delft embankment</WikiLink>, 
+            or by the thin ribbon of milk suspended forever in mid-pour from a <WikiLink href="https://en.wikipedia.org/wiki/The_Milkmaid_(Vermeer)">milkmaid’s jug</WikiLink>, 
+            all courtesy of this oxidation process preserving colours.
+          </p>
+          <hr className="w-16 h-1 bg-blue-900 my-8 opacity-20 mx-auto border-none" />
+          <p>
+            “Oil” and “air” are the common topics in this transition from Texas to Old Masters. 
+            Many types of oil readily oxidise in air, and herein lies the biological problem. 
+            Every cell in our body, and multiple compartments inside of those cells have elaborate 
+            barrier structures, called <WikiLink href="https://en.wikipedia.org/wiki/Cell_membrane">lipid membranes</WikiLink>, 
+            built of such oxidisable lipid molecules, referred to as <WikiLink href="https://en.wikipedia.org/wiki/Polyunsaturated_fat">omega-3 and omega-6</WikiLink>. 
+            And most cells in our body handle oxygen (<WikiLink href="https://en.wikipedia.org/wiki/Cellular_respiration">respiration</WikiLink>). 
+            So, what happened to that bottle of oil, and to the painting, also happens to us all the time: <WikiLink href="https://en.wikipedia.org/wiki/Lipid_peroxidation">Lipid Peroxidation</WikiLink>.
+          </p>
+          <p>
+            Of the <WikiLink href="https://en.wikipedia.org/wiki/Estimates_of_historical_world_population">100 billion people</WikiLink> who 
+            ever lived on this planet, only the ones killed in battle or accident did not see oxygen play a prominent role in their demise. 
+            Oxygen can oxidise whole planets — just look at <WikiLink href="https://en.wikipedia.org/wiki/Geological_history_of_Mars">Mars</WikiLink>. 
+            What chance do tiny cells, choke-full of “flammable” biomolecules, have to resist it?
+          </p>
+          <p>
+            They try their best – there is an arsenal of <WikiLink href="https://en.wikipedia.org/wiki/Antioxidant">antioxidants</WikiLink>, 
+            multiple <WikiLink href="https://en.wikipedia.org/wiki/Detoxification">detoxifying</WikiLink> enzymes, 
+            and <WikiLink href="https://en.wikipedia.org/wiki/Metabolic_waste">garbage removal</WikiLink> systems. 
+            But there is an insidious side to lipids. Tightly packed in membranes like dominoes, 
+            multiple lipid molecules also <WikiLink href="https://en.wikipedia.org/wiki/Domino_toppling">fall like dominoes</WikiLink>, 
+            when hit with a single <WikiLink href="https://en.wikipedia.org/wiki/Reactive_oxygen_species">activated oxygen molecule</WikiLink>. 
+            This represents the only <WikiLink href="https://en.wikipedia.org/wiki/Chain_reactions_in_living_organisms">non-enzymatic chain reaction in life</WikiLink>.
+          </p>
+        </div>
+      </Section>
+
+      {/* KEY CONCEPTS */}
       <Section title="Key Concepts in the Book" className="bg-white" id="concepts">
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
-          
           {/* Concept 1 */}
           <div>
             <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-red-800 pl-4">
@@ -163,7 +226,6 @@ export default function BookWebsite() {
               waste products that accelerate aging.
             </p>
           </div>
-
           {/* Concept 2 */}
           <div>
             <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-slate-300 pl-4">
@@ -175,7 +237,6 @@ export default function BookWebsite() {
               the body's natural defenses.
             </p>
           </div>
-
           {/* Concept 3 */}
           <div>
             <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-4">
@@ -186,7 +247,6 @@ export default function BookWebsite() {
               that have been chemically strengthened with Deuterium to resist damage before they are even consumed.
             </p>
           </div>
-
           {/* Concept 4 */}
           <div>
             <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-4">
@@ -198,8 +258,7 @@ export default function BookWebsite() {
               and younger-looking skin.
             </p>
           </div>
-
-          {/* Concept 5 - Spanning full width if needed, or just in grid */}
+          {/* Concept 5 */}
           <div className="md:col-span-2 bg-slate-50 p-6 rounded border border-slate-200">
              <div className="flex gap-4 items-start">
                 <CheckCircle2 className="text-blue-800 flex-shrink-0 mt-1" />
@@ -212,17 +271,15 @@ export default function BookWebsite() {
                 </div>
              </div>
           </div>
-
         </div>
       </Section>
 
-      {/* TESTIMONIALS (UPDATED WITH REAL PHOTOS) */}
+      {/* TESTIMONIALS */}
       <Section title="Praise for the Book" id="reviews" className="bg-slate-50">
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
           {testimonials.map((t, idx) => (
             <div key={idx} className="bg-white p-8 rounded border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative">
               <div className="flex items-center gap-5 mb-6">
-                {/* PORTRAIT */}
                 <img 
                   src={t.image} 
                   alt={t.name}
