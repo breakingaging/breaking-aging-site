@@ -70,6 +70,28 @@ const chapters = [
   }
 ];
 
+// --- SCHEMA.ORG (ПАСПОРТ КНИГИ ДЛЯ GOOGLE) ---
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: 'Breaking the Chains of Aging',
+  author: {
+    '@type': 'Person',
+    name: 'Mikhail S. Shchepinov',
+    jobTitle: 'PhD in Bioorganic Chemistry'
+  },
+  isbn: '978-1742535821',
+  description: 'Oxygen fuels our bodies with life-giving energy — but at a hidden cost. Discover the new scientific paradigm of Lipid Peroxidation and the Isotope Effect.',
+  image: 'https://i.ibb.co/QFBzgZ6K/71uv-J6-U35-JL-SL1360.jpg',
+  offers: {
+    '@type': 'Offer',
+    price: '35.00',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: AMAZON_LINK
+  }
+};
+
 // --- КОМПОНЕНТЫ ---
 
 const Section = ({ title, children, className = "", id = "" }: { title: string, children: React.ReactNode, className?: string, id?: string }) => (
@@ -120,6 +142,11 @@ const WikiLink = ({ href, children }: { href: string, children: React.ReactNode 
 export default function BookWebsite() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-slate-800 font-sans selection:bg-blue-100">
+      {/* Вставка скрытых данных для Google */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* HEADER */}
       <header className="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 z-50 shadow-sm transition-all">
@@ -393,7 +420,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* ASK AUTHOR SECTION (NEW) */}
+      {/* ASK AUTHOR SECTION */}
       <Section title="Ask Dr. Shchepinov a Question" id="contact" className="bg-white">
         <div className="max-w-3xl mx-auto text-center">
            <div className="bg-slate-50 p-10 rounded-lg border border-slate-200 shadow-sm">

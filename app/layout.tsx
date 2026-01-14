@@ -10,9 +10,24 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: "Breaking the Chains of Aging - Stealth Mode",
-  description: "Project under development",
-  // ВОТ ОН - SEO ЩИТ:
+  // 1. ЗАГОЛОВОК И ОПИСАНИЕ (SEO)
+  title: "Breaking the Chains of Aging | The Biochemical Drama",
+  description: "Discover the new scientific paradigm of Lipid Peroxidation and the Isotope Effect. A groundbreaking book by Mikhail S. Shchepinov, PhD.",
+  
+  // 2. ИКОНКА (FAVICON)
+  icons: {
+    icon: 'https://fav.farm/🧬', // Иконка ДНК
+  },
+
+  // 3. СОЦСЕТИ (OPEN GRAPH)
+  openGraph: {
+    title: "Breaking the Chains of Aging",
+    description: "The Biochemical Drama. Why antioxidants fail and how Deuterium can stop the aging chain reaction.",
+    images: ['https://i.ibb.co/QFBzgZ6K/71uv-J6-U35-JL-SL1360.jpg'], // Обложка книги
+    type: 'book',
+  },
+
+  // 4. SEO ЩИТ (ПОКА ВКЛЮЧЕН)
   robots: {
     index: false,
     follow: false,
@@ -25,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${merriweather.variable} font-sans`}>{children}</body>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.variable} ${merriweather.variable} font-sans antialiased`}>{children}</body>
     </html>
   );
 }
