@@ -1,7 +1,20 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, ExternalLink } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, ExternalLink, PlayCircle } from 'lucide-react';
+
+// --- ДАННЫЕ: ВИДЕО ЛЕКЦИИ ---
+
+const videos = [
+  {
+    title: "Tpresenting at Undoing Aginghe biochemical drama of aging",
+    id: "JUZBOueVkEM" 
+  },
+  {
+    title: "GoldLab Symposium",
+    id: "T-kC-CojSec" 
+  }
+];
 
 // --- ДАННЫЕ: ОТЗЫВЫ ---
 const testimonials = [
@@ -88,7 +101,6 @@ const AccordionItem = ({ title, desc }: { title: string, desc: string }) => {
   );
 };
 
-// Компонент для ссылок в тексте
 const WikiLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
   <a 
     href={href} 
@@ -116,7 +128,7 @@ export default function BookWebsite() {
           <nav className="hidden md:flex space-x-8 text-sm font-medium text-slate-600 uppercase tracking-wider">
             <a href="#book" className="hover:text-blue-800 transition">The Book</a>
             <a href="#prologue" className="hover:text-blue-800 transition">Prologue</a>
-            <a href="#concepts" className="hover:text-blue-800 transition">Concepts</a>
+            <a href="#videos" className="hover:text-blue-800 transition">Videos</a>
             <a href="#reviews" className="hover:text-blue-800 transition">Reviews</a>
           </nav>
         </div>
@@ -161,8 +173,8 @@ export default function BookWebsite() {
         </div>
       </section>
 
-      {/* PROLOGUE (NEW STORY SECTION) */}
-      <Section title="Prologue: Chain reaction of lipid peroxidation is everywhere" id="prologue" className="bg-stone-50">
+      {/* PROLOGUE (STORY SECTION) */}
+      <Section title="Prologue: A Tale of Two Oils" id="prologue" className="bg-stone-50">
         <div className="prose prose-lg prose-slate max-w-none font-serif leading-loose">
           <p>
             At a BBQ party in Texas, you drizzle a little <WikiLink href="https://en.wikipedia.org/wiki/Vegetable_oil">vegetable oil</WikiLink> into 
@@ -215,7 +227,7 @@ export default function BookWebsite() {
       {/* KEY CONCEPTS */}
       <Section title="Key Concepts in the Book" className="bg-white" id="concepts">
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
-          {/* Concept 1 */}
+          {/* Concepts... (Same as before) */}
           <div>
             <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-red-800 pl-4">
               The Problem: Lipid Peroxidation (LPO)
@@ -226,7 +238,6 @@ export default function BookWebsite() {
               waste products that accelerate aging.
             </p>
           </div>
-          {/* Concept 2 */}
           <div>
             <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-slate-300 pl-4">
               The Limitation of Antioxidants
@@ -237,7 +248,6 @@ export default function BookWebsite() {
               the body's natural defenses.
             </p>
           </div>
-          {/* Concept 3 */}
           <div>
             <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-4">
               The Solution: D-PUFAs
@@ -247,7 +257,6 @@ export default function BookWebsite() {
               that have been chemically strengthened with Deuterium to resist damage before they are even consumed.
             </p>
           </div>
-          {/* Concept 4 */}
           <div>
             <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-4">
               How D-PUFAs Work
@@ -258,7 +267,6 @@ export default function BookWebsite() {
               and younger-looking skin.
             </p>
           </div>
-          {/* Concept 5 */}
           <div className="md:col-span-2 bg-slate-50 p-6 rounded border border-slate-200">
              <div className="flex gap-4 items-start">
                 <CheckCircle2 className="text-blue-800 flex-shrink-0 mt-1" />
@@ -271,6 +279,33 @@ export default function BookWebsite() {
                 </div>
              </div>
           </div>
+        </div>
+      </Section>
+
+      {/* NEW SECTION: VIDEOS & LECTURES */}
+      <Section title="Lectures & Interviews" id="videos" className="bg-slate-900 text-white">
+        <div className="grid md:grid-cols-2 gap-10">
+          {videos.map((video, idx) => (
+            <div key={idx} className="group">
+              <div className="aspect-video w-full bg-slate-800 rounded-lg overflow-hidden shadow-2xl mb-4 border border-slate-700 relative">
+                {/* YouTube Embed */}
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src={`https://www.youtube.com/embed/${video.id}`} 
+                  title={video.title}
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                  className="absolute inset-0"
+                ></iframe>
+              </div>
+              <h4 className="text-lg font-serif text-slate-200 flex items-center gap-3">
+                 <PlayCircle size={20} className="text-blue-400" />
+                 {video.title}
+              </h4>
+            </div>
+          ))}
         </div>
       </Section>
 
