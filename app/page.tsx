@@ -9,28 +9,28 @@ const testimonials = [
     name: "Aubrey D.N.J. de Grey",
     role: "Ph.D., Chairman and Chief Science Officer of the Methuselah Foundation",
     // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО ОБРИ ДИ ГРЕЯ:
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Aubrey_de_Grey_2010.jpg/640px-Aubrey_de_Grey_2010.jpg", 
+    image: "https://i.ibb.co/tp67mR8B/Aubreyde-Grey.jpg", 
     text: "Shchepinov is a true biomedical groundbreaker. His insight, now dating back over 20 years, that the isotope effect might have medical utility was so outlandish that even I was initially inclined to dismiss it. How glad I am that I put my doubts aside! In this book, Shchepinov presents the idea and its development in a form that should be easily digestible. Its time has come!"
   },
   {
     name: "Barry Halliwell",
     role: "Chairman, Biomedical Advisory Council (BMAC), A*STAR",
     // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО БАРРИ:
-    image: "https://www.nuhs.edu.sg/wsu/PublishingImages/bio/Prof%20Barry%20Halliwell.jpg",
+    image: "https://i.ibb.co/LD9hNdhx/Barry-Halliwell.jpg",
     text: "Lipid peroxidation is a fundamental mechanism of oxidative damage that has been studied for over 100 years. The recent discovery of ferroptosis has re-awakened interest in iron and lipid peroxidation. In this amusing, provocative and sometimes iconoclastic book, Misha Shchepinov explores the role of fatty acids. It is a good read, I recommend it."
   },
   {
     name: "Charles R. Cantor",
     role: "American molecular geneticist, CSO at Sequenom",
     // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО ЧАРЛЬЗА:
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Charles_Cantor.jpg",
+    image: "https://i.ibb.co/pjd3LLQy/Charles-Cantor.jpg",
     text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise."
   },
   {
     name: "J. Thomas Brenna",
     role: "Ph.D., Professor of Pediatrics, Chemistry, and Human Nutrition",
     // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО ТОМАСА:
-    image: "https://dellmed.utexas.edu/sites/default/files/styles/1_1_square_sm/public/2022-03/Brenna-Tom-400x400.jpg", 
+    image: "https://i.ibb.co/5D5rYgL/Thomas-Brenna.avif", 
     text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach."
   }
 ];
