@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, PlayCircle } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, PlayCircle, Mail, MessageCircle } from 'lucide-react';
 
 // --- ССЫЛКА НА AMAZON ---
 const AMAZON_LINK = "https://www.amazon.com/Breaking-Chains-Aging-biochemical-drama/dp/1913460975";
 
-// --- ДАННЫЕ: ВИДЕО (ОБНОВЛЕНО) ---
+// --- ДАННЫЕ: ВИДЕО ---
 const videos = [
   {
     title: "Presenting at Undoing Aging",
@@ -134,6 +134,7 @@ export default function BookWebsite() {
               <a href="#prologue" className="hover:text-blue-800 transition">Prologue</a>
               <a href="#concepts" className="hover:text-blue-800 transition">Concepts</a>
               <a href="#videos" className="hover:text-blue-800 transition">Videos</a>
+              <a href="#contact" className="hover:text-blue-800 transition">Ask Author</a>
             </nav>
 
             {/* HEADER BUTTON */}
@@ -193,7 +194,7 @@ export default function BookWebsite() {
         </div>
       </section>
 
-      {/* PROLOGUE (TITLE UPDATED) */}
+      {/* PROLOGUE */}
       <Section title="Chain reaction of lipid peroxidation is everywhere" id="prologue" className="bg-stone-50">
         <div className="prose prose-lg prose-slate max-w-none font-serif leading-loose">
           <p>
@@ -301,7 +302,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* VIDEOS & LECTURES (UPDATED) */}
+      {/* VIDEOS & LECTURES */}
       <Section title="Lectures & Interviews" id="videos" className="bg-slate-900 text-white">
         <div className="grid md:grid-cols-2 gap-10">
           {videos.map((video, idx) => (
@@ -392,7 +393,29 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* FOOTER (TEXT UPDATED) */}
+      {/* ASK AUTHOR SECTION (NEW) */}
+      <Section title="Ask Dr. Shchepinov a Question" id="contact" className="bg-white">
+        <div className="max-w-3xl mx-auto text-center">
+           <div className="bg-slate-50 p-10 rounded-lg border border-slate-200 shadow-sm">
+             <MessageCircle size={48} className="text-blue-900 mx-auto mb-6 opacity-20" />
+             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+               Dr. Shchepinov welcomes questions from the scientific community and interested readers regarding 
+               Deuterium, Lipid Peroxidation, and the chemistry of aging.
+             </p>
+             <a 
+               href="mailto:info@breakingaging.com?subject=Question%20regarding%20Breaking%20the%20Chains%20of%20Aging"
+               className="inline-flex items-center gap-3 bg-blue-900 text-white px-8 py-4 rounded-sm hover:bg-blue-800 transition text-lg font-medium shadow-md"
+             >
+               <Mail size={20} /> Send a Question via Email
+             </a>
+             <p className="mt-4 text-xs text-slate-400 uppercase tracking-widest">
+               info@breakingaging.com
+             </p>
+           </div>
+        </div>
+      </Section>
+
+      {/* FOOTER */}
       <footer className="bg-white py-10 border-t border-slate-200 text-center text-slate-500 text-sm">
         <p>&copy; 2026 Breaking chains of aging. All rights reserved.</p>
         <p className="mt-2">Contact: info@breakingaging.com</p>
