@@ -174,7 +174,7 @@ export default function BookWebsite() {
       </section>
 
       {/* PROLOGUE (STORY SECTION) */}
-      <Section title="Prologue: A Tale of Two Oils" id="prologue" className="bg-stone-50">
+      <Section title="Prologue: Chain reaction of lipid peroxidation is everywhere" id="prologue" className="bg-stone-50">
         <div className="prose prose-lg prose-slate max-w-none font-serif leading-loose">
           <p>
             At a BBQ party in Texas, you drizzle a little <WikiLink href="https://en.wikipedia.org/wiki/Vegetable_oil">vegetable oil</WikiLink> into 
