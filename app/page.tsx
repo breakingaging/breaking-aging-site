@@ -1,35 +1,31 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2 } from 'lucide-react';
 
-// --- ДАННЫЕ: ОТЗЫВЫ (С ФОТО) ---
+// --- ДАННЫЕ: ОТЗЫВЫ (С ВАШИМИ ФОТО) ---
 const testimonials = [
   {
     name: "Aubrey D.N.J. de Grey",
     role: "Ph.D., Chairman and Chief Science Officer of the Methuselah Foundation",
-    // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО ОБРИ ДИ ГРЕЯ:
     image: "https://i.ibb.co/tp67mR8B/Aubreyde-Grey.jpg", 
     text: "Shchepinov is a true biomedical groundbreaker. His insight, now dating back over 20 years, that the isotope effect might have medical utility was so outlandish that even I was initially inclined to dismiss it. How glad I am that I put my doubts aside! In this book, Shchepinov presents the idea and its development in a form that should be easily digestible. Its time has come!"
   },
   {
     name: "Barry Halliwell",
     role: "Chairman, Biomedical Advisory Council (BMAC), A*STAR",
-    // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО БАРРИ:
     image: "https://i.ibb.co/LD9hNdhx/Barry-Halliwell.jpg",
     text: "Lipid peroxidation is a fundamental mechanism of oxidative damage that has been studied for over 100 years. The recent discovery of ferroptosis has re-awakened interest in iron and lipid peroxidation. In this amusing, provocative and sometimes iconoclastic book, Misha Shchepinov explores the role of fatty acids. It is a good read, I recommend it."
   },
   {
     name: "Charles R. Cantor",
     role: "American molecular geneticist, CSO at Sequenom",
-    // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО ЧАРЛЬЗА:
     image: "https://i.ibb.co/pjd3LLQy/Charles-Cantor.jpg",
     text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise."
   },
   {
     name: "J. Thomas Brenna",
     role: "Ph.D., Professor of Pediatrics, Chemistry, and Human Nutrition",
-    // ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ФОТО ТОМАСА:
     image: "https://i.ibb.co/5D5rYgL/Thomas-Brenna.avif", 
     text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach."
   }
@@ -106,7 +102,7 @@ export default function BookWebsite() {
           </div>
           <nav className="hidden md:flex space-x-8 text-sm font-medium text-slate-600 uppercase tracking-wider">
             <a href="#book" className="hover:text-blue-800 transition">The Book</a>
-            <a href="#science" className="hover:text-blue-800 transition">The Science</a>
+            <a href="#concepts" className="hover:text-blue-800 transition">Key Concepts</a>
             <a href="#reviews" className="hover:text-blue-800 transition">Reviews</a>
             <a href="#author" className="hover:text-blue-800 transition">Author</a>
           </nav>
@@ -152,45 +148,75 @@ export default function BookWebsite() {
         </div>
       </section>
 
-      {/* THE PROBLEM */}
-      <Section title="The Oxidative Paradox" className="bg-white" id="science">
-        <div className="grid md:grid-cols-2 gap-10">
-          <div className="text-lg leading-relaxed text-slate-700">
-            <p className="mb-6">
-              Breathing oxygen generates energy by burning our food but at the same time, 
-              it relentlessly wears out all parts of our biochemical machinery.
-            </p>
-            <p className="mb-6 font-semibold border-l-4 border-red-800 pl-4">
-              The most pernicious type of damage is Lipid Peroxidation (LPO) — 
-              the only example of a non-enzymatic chain reaction in biology.
-            </p>
-            <p>
-              Once ignited, it generates multiple damage points. The body does not invest 
-              enough into clean-up processes, leading to the accumulation of toxic products 
-              like <b>HNE</b> and <b>MDA</b>.
+      {/* KEY CONCEPTS (REPLACED SECTION) */}
+      <Section title="Key Concepts in the Book" className="bg-white" id="concepts">
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
+          
+          {/* Concept 1 */}
+          <div>
+            <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-red-800 pl-4">
+              The Problem: Lipid Peroxidation (LPO)
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Oxygen, while essential, creates damaging free radicals. LPO is a particularly destructive, 
+              self-propagating chain reaction that degrades fats (lipids) in the body, accumulating 
+              waste products that accelerate aging.
             </p>
           </div>
-          <div className="bg-slate-100 p-8 rounded border border-slate-200 flex flex-col justify-center">
-            <h3 className="font-serif text-xl mb-4 text-slate-900">Key Affected Systems:</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-red-500 rounded-full"></div> Brain & Neurodegeneration
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-red-500 rounded-full"></div> Vision & Retina (AMD)
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-red-500 rounded-full"></div> Mitochondria function
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-red-500 rounded-full"></div> Inflammation & Pain
-              </li>
-            </ul>
+
+          {/* Concept 2 */}
+          <div>
+            <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-slate-300 pl-4">
+              The Limitation of Antioxidants
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Traditional antioxidants are often inefficient against LPO because they can't stop 
+              the chain reaction once it starts. The exponential nature of the damage overwhelms 
+              the body's natural defenses.
+            </p>
           </div>
+
+          {/* Concept 3 */}
+          <div>
+            <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-4">
+              The Solution: D-PUFAs
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Shchepinov introduces "reinforced PUFAs" (D-PUFAs). These are polyunsaturated fatty acids 
+              that have been chemically strengthened with Deuterium to resist damage before they are even consumed.
+            </p>
+          </div>
+
+          {/* Concept 4 */}
+          <div>
+            <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-4">
+              How D-PUFAs Work
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              They prevent LPO from starting, fight inflammation (inflammaging), and can even help 
+              undo existing damage, leading to benefits like better cholesterol, sharper eyes, 
+              and younger-looking skin.
+            </p>
+          </div>
+
+          {/* Concept 5 - Spanning full width if needed, or just in grid */}
+          <div className="md:col-span-2 bg-slate-50 p-6 rounded border border-slate-200">
+             <div className="flex gap-4 items-start">
+                <CheckCircle2 className="text-blue-800 flex-shrink-0 mt-1" />
+                <div>
+                   <h3 className="text-xl font-serif font-bold text-slate-900 mb-2">Accessibility</h3>
+                   <p className="text-slate-600 leading-relaxed">
+                     The book is written to be understandable for a broad audience, not just scientists, 
+                     and connects molecular mechanisms to lifestyle choices.
+                   </p>
+                </div>
+             </div>
+          </div>
+
         </div>
       </Section>
 
-      {/* TESTIMONIALS (WITH PHOTOS) */}
+      {/* TESTIMONIALS (UPDATED WITH REAL PHOTOS) */}
       <Section title="Praise for the Book" id="reviews" className="bg-slate-50">
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
           {testimonials.map((t, idx) => (
