@@ -1,17 +1,19 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, ExternalLink, PlayCircle } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, PlayCircle } from 'lucide-react';
 
-// --- ДАННЫЕ: ВИДЕО ЛЕКЦИИ ---
+// --- ССЫЛКА НА AMAZON ---
+const AMAZON_LINK = "https://www.amazon.com/Breaking-Chains-Aging-biochemical-drama/dp/1913460975";
 
+// --- ДАННЫЕ: ВИДЕО (ОБНОВЛЕНО) ---
 const videos = [
   {
-    title: "Presenting at Undoing Aging ",
-    id: "JUZBOueVkEM" 
+    title: "Presenting at Undoing Aging",
+    id: "JUZBOueVkEM"
   },
   {
-    title: "GoldLab Symposium",
+    title: "GoldLab Symposium 2019",
     id: "T-kC-CojSec" 
   }
 ];
@@ -120,17 +122,30 @@ export default function BookWebsite() {
     <div className="min-h-screen bg-[#FAFAFA] text-slate-800 font-sans selection:bg-blue-100">
       
       {/* HEADER */}
-      <header className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 z-50 shadow-sm transition-all">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="text-lg font-serif font-bold text-slate-900 tracking-wide">
             Mikhail S. Shchepinov, PhD
           </div>
-          <nav className="hidden md:flex space-x-8 text-sm font-medium text-slate-600 uppercase tracking-wider">
-            <a href="#book" className="hover:text-blue-800 transition">The Book</a>
-            <a href="#prologue" className="hover:text-blue-800 transition">Prologue</a>
-            <a href="#videos" className="hover:text-blue-800 transition">Videos</a>
-            <a href="#reviews" className="hover:text-blue-800 transition">Reviews</a>
-          </nav>
+          
+          <div className="flex items-center gap-8">
+            <nav className="hidden md:flex space-x-6 text-xs font-bold text-slate-500 uppercase tracking-widest">
+              <a href="#book" className="hover:text-blue-800 transition">The Book</a>
+              <a href="#prologue" className="hover:text-blue-800 transition">Prologue</a>
+              <a href="#concepts" className="hover:text-blue-800 transition">Concepts</a>
+              <a href="#videos" className="hover:text-blue-800 transition">Videos</a>
+            </nav>
+
+            {/* HEADER BUTTON */}
+            <a 
+              href={AMAZON_LINK} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hidden md:flex bg-blue-900 text-white px-5 py-2.5 rounded-sm font-medium hover:bg-blue-800 transition items-center gap-2 text-sm shadow-md"
+            >
+              <ShoppingCart size={16} /> Buy on Amazon
+            </a>
+          </div>
         </div>
       </header>
 
@@ -150,9 +165,14 @@ export default function BookWebsite() {
               Discover the new scientific paradigm of <b>Lipid Peroxidation</b> and the <b>Isotope Effect</b>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-slate-900 text-white px-8 py-4 rounded-sm font-medium hover:bg-blue-900 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
+              <a 
+                href={AMAZON_LINK}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-slate-900 text-white px-8 py-4 rounded-sm font-medium hover:bg-blue-900 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer"
+              >
                 <ShoppingCart size={20} /> Order on Amazon
-              </button>
+              </a>
               <button className="border border-slate-300 px-8 py-4 rounded-sm font-medium hover:bg-white transition flex items-center justify-center gap-2">
                 <BookOpen size={20} /> Read Chapter 1
               </button>
@@ -161,20 +181,20 @@ export default function BookWebsite() {
           
           {/* 3D BOOK MOCKUP */}
           <div className="flex justify-center md:justify-end mt-10 md:mt-0">
-             <div className="relative w-[280px] md:w-[350px] shadow-2xl rounded overflow-hidden transform rotate-2 hover:rotate-0 transition-all duration-700 ease-out border-r-2 border-b-2 border-slate-900/10">
+             <a href={AMAZON_LINK} target="_blank" rel="noopener noreferrer" className="relative w-[280px] md:w-[350px] shadow-2xl rounded overflow-hidden transform rotate-2 hover:rotate-0 transition-all duration-700 ease-out border-r-2 border-b-2 border-slate-900/10 cursor-pointer group">
                 <img 
                   src="https://i.ibb.co/QFBzgZ6K/71uv-J6-U35-JL-SL1360.jpg" 
                   alt="Breaking the Chains of Aging Book Cover" 
                   className="w-full h-auto object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none"></div>
-             </div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none group-hover:opacity-0 transition-opacity"></div>
+             </a>
           </div>
         </div>
       </section>
 
-      {/* PROLOGUE (STORY SECTION) */}
-      <Section title="Prologue: Chain reaction of lipid peroxidation is everywhere" id="prologue" className="bg-stone-50">
+      {/* PROLOGUE (TITLE UPDATED) */}
+      <Section title="Chain reaction of lipid peroxidation is everywhere" id="prologue" className="bg-stone-50">
         <div className="prose prose-lg prose-slate max-w-none font-serif leading-loose">
           <p>
             At a BBQ party in Texas, you drizzle a little <WikiLink href="https://en.wikipedia.org/wiki/Vegetable_oil">vegetable oil</WikiLink> into 
@@ -227,7 +247,6 @@ export default function BookWebsite() {
       {/* KEY CONCEPTS */}
       <Section title="Key Concepts in the Book" className="bg-white" id="concepts">
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
-          {/* Concepts... (Same as before) */}
           <div>
             <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 border-l-4 border-red-800 pl-4">
               The Problem: Lipid Peroxidation (LPO)
@@ -282,13 +301,12 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* NEW SECTION: VIDEOS & LECTURES */}
+      {/* VIDEOS & LECTURES (UPDATED) */}
       <Section title="Lectures & Interviews" id="videos" className="bg-slate-900 text-white">
         <div className="grid md:grid-cols-2 gap-10">
           {videos.map((video, idx) => (
             <div key={idx} className="group">
               <div className="aspect-video w-full bg-slate-800 rounded-lg overflow-hidden shadow-2xl mb-4 border border-slate-700 relative">
-                {/* YouTube Embed */}
                 <iframe 
                   width="100%" 
                   height="100%" 
@@ -374,9 +392,9 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* FOOTER */}
+      {/* FOOTER (TEXT UPDATED) */}
       <footer className="bg-white py-10 border-t border-slate-200 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Lipid Aging. All rights reserved.</p>
+        <p>&copy; 2026 Breaking chains of aging. All rights reserved.</p>
         <p className="mt-2">Contact: info@breakingaging.com</p>
       </footer>
 
