@@ -97,7 +97,7 @@ export default function BookWebsite() {
               Discover the new scientific paradigm of <b>Lipid Peroxidation</b> and the <b>Isotope Effect</b>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-slate-900 text-white px-8 py-4 rounded-sm font-medium hover:bg-blue-900 transition flex items-center justify-center gap-2">
+              <button className="bg-slate-900 text-white px-8 py-4 rounded-sm font-medium hover:bg-blue-900 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
                 <ShoppingCart size={20} /> Order on Amazon
               </button>
               <button className="border border-slate-300 px-8 py-4 rounded-sm font-medium hover:bg-white transition flex items-center justify-center gap-2">
@@ -106,20 +106,23 @@ export default function BookWebsite() {
             </div>
           </div>
           
-          {/* 3D BOOK MOCKUP PLACEHOLDER */}
-          <div className="relative bg-slate-200 aspect-[3/4] rounded shadow-2xl flex items-center justify-center group cursor-pointer">
-             <div className="text-center p-10">
-                <div className="text-4xl mb-4">⛓️🧬</div>
-                <p className="font-serif text-slate-500 italic">Book Cover Image</p>
-                <p className="text-xs text-slate-400 mt-2">(Dark background with chains)</p>
+          {/* 3D BOOK MOCKUP */}
+          <div className="flex justify-center md:justify-end mt-10 md:mt-0">
+             <div className="relative w-[280px] md:w-[350px] shadow-2xl rounded overflow-hidden transform rotate-2 hover:rotate-0 transition-all duration-700 ease-out border-r-2 border-b-2 border-slate-900/10">
+                <img 
+                  src="https://i.ibb.co/QFBzgZ6K/71uv-J6-U35-JL-SL1360.jpg" 
+                  alt="Breaking the Chains of Aging Book Cover" 
+                  className="w-full h-auto object-cover"
+                />
+                {/* Shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none"></div>
              </div>
-             <div className="absolute -z-10 top-10 -right-10 w-full h-full border-2 border-slate-300 rounded"></div>
           </div>
         </div>
       </section>
 
       {/* THE PROBLEM (SCIENTIFIC SUMMARY) */}
-      <Section title="The Oxidative Paradox" className="bg-white">
+      <Section title="The Oxidative Paradox" className="bg-white" id="science">
         <div className="grid md:grid-cols-2 gap-10">
           <div className="text-lg leading-relaxed text-slate-700">
             <p className="mb-6">
@@ -171,15 +174,18 @@ export default function BookWebsite() {
 
       {/* AUTHOR SECTION */}
       <Section title="About the Author" id="author" className="bg-slate-900 text-slate-200">
-        <div className="flex flex-col md:flex-row gap-10 items-start">
-          <div className="w-32 h-32 md:w-48 md:h-48 bg-slate-700 rounded-full flex-shrink-0 border-4 border-slate-600 overflow-hidden">
-            {/* Placeholder for Photo */}
-            <img src="https://placehold.co/400x400/333/FFF?text=PhD" alt="Mikhail Shchepinov" className="w-full h-full object-cover opacity-50" />
+        <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
+          <div className="w-48 h-48 md:w-56 md:h-56 bg-slate-800 rounded-full flex-shrink-0 border-4 border-slate-600 overflow-hidden shadow-2xl">
+            <img 
+              src="https://i.ibb.co/PGN5Nx6m/photo-2021-03-02-16-02-58-768x797.jpg" 
+              alt="Mikhail Shchepinov" 
+              className="w-full h-full object-cover" 
+            />
           </div>
           <div>
-            <h3 className="text-2xl font-serif text-white mb-2">Mikhail S. Shchepinov, PhD</h3>
+            <h3 className="text-3xl font-serif text-white mb-2">Mikhail S. Shchepinov, PhD</h3>
             <p className="text-blue-300 mb-6 uppercase text-sm tracking-widest">Bioorganic Chemistry</p>
-            <p className="text-slate-300 leading-relaxed mb-6">
+            <p className="text-slate-300 leading-relaxed mb-6 max-w-2xl">
               Dr. Shchepinov has a PhD degree in bioorganic chemistry. He worked in academia and biotech 
               in <b>Oxford, UK</b> and <b>San Diego, USA</b>, and is currently affiliated with several universities. 
               His area of interest is the chemistry of aging and mitigation of age-related diseases.
@@ -193,7 +199,7 @@ export default function BookWebsite() {
 
       {/* FOOTER */}
       <footer className="bg-white py-10 border-t border-slate-200 text-center text-slate-500 text-sm">
-        <p>&copy; 2024 Lipid Aging. All rights reserved.</p>
+        <p>&copy; 2026 Lipid Aging. All rights reserved.</p>
         <p className="mt-2">Contact: info@breakingaging.com</p>
       </footer>
 
