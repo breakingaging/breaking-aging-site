@@ -3,27 +3,27 @@
 import React from 'react';
 import { BookOpen, ChevronDown, ChevronUp, ShoppingCart } from 'lucide-react';
 
-// --- ДАННЫЕ (Ваш контент) ---
+// --- ДАННЫЕ (Обновленные SEO-тексты) ---
 const chapters = [
   { 
     title: "Chain reaction: a portrait in oils", 
-    desc: "Explaining the mechanism of lipid peroxidation and why it resembles a runaway fire." 
+    desc: "A deep dive into the chemistry of aging. How Polyunsaturated Fatty Acids (PUFA) become the fuel for the non-enzymatic chain reaction of lipid peroxidation. Understanding the thermodynamics of cellular damage." 
   },
   { 
     title: "Linoleum brain", 
-    desc: "Why the brain, being essentially fat, is the primary target for oxidative degradation." 
+    desc: "Why the brain is the primary target. Exploring the link between lipid peroxidation and neurodegenerative conditions like Alzheimer’s, Parkinson’s, and mild cognitive impairment. The role of amyloid beta and oxidative stress." 
   },
   { 
     title: "Ferro-cious metals in oxygen environment", 
-    desc: "The deadly interplay between iron (Ferroptosis) and oxygen in the aging process." 
+    desc: "The deadly interplay between transition metals and oxygen. Uncovering the mechanism of Ferroptosis and how iron catalyzes the production of hydroxyl radicals and superoxide, leading to irreversible cell damage." 
   },
   { 
     title: "Antioxidants cannot stop the chain reaction", 
-    desc: "Why traditional supplements fail against the exponential nature of LPO." 
+    desc: "Dispelling the myth: why traditional antioxidants fail to stop the exponential rate of peroxidation. An analysis of reactive carbonyls (HNE, HHE, MDA) and why the body's clean-up mechanisms (ALDH2) get overwhelmed." 
   },
   { 
     title: "D-PUFA: the α-male of the ω-fats", 
-    desc: "The solution: How Deuterium reinforcement creates unbreakable bonds." 
+    desc: "The Solution: The Kinetic Isotope Effect explained. How replacing hydrogen with Deuterium (heavy hydrogen) in PUFAs creates unbreaking bonds, effectively stopping the chain reaction and preventing mitochondrial dysfunction." 
   }
 ];
 
