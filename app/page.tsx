@@ -199,7 +199,7 @@ export default function BookWebsite() {
 
       {/* FOOTER */}
       <footer className="bg-white py-10 border-t border-slate-200 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Lipid Aging. All rights reserved.</p>
+        <p>&copy; 2026 Breaking the Chains of Aging.</p>
         <p className="mt-2">Contact: info@breakingaging.com</p>
       </footer>
 
