@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, PlayCircle, Mail, MessageCircle } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, PlayCircle, Mail, MessageCircle, Download } from 'lucide-react';
 
-// --- ССЫЛКА НА AMAZON ---
+// --- ССЫЛКИ ---
 const AMAZON_LINK = "https://www.amazon.com/Breaking-Chains-Aging-biochemical-drama/dp/1913460975";
+// Ссылка на PDF (пока заглушка, позже заменим на Lemon Squeezy)
+const PDF_LINK = "#"; 
 
 // --- ДАННЫЕ: ВИДЕО ---
 const videos = [
@@ -18,30 +20,34 @@ const videos = [
   }
 ];
 
-// --- ДАННЫЕ: ОТЗЫВЫ ---
+// --- ДАННЫЕ: ОТЗЫВЫ (С ССЫЛКАМИ) ---
 const testimonials = [
   {
     name: "Aubrey D.N.J. de Grey",
     role: "Ph.D., Chairman and Chief Science Officer of the Methuselah Foundation",
-    image: "https://i.ibb.co/tp67mR8B/Aubreyde-Grey.jpg", 
+    image: "https://i.ibb.co/tp67mR8B/Aubreyde-Grey.jpg",
+    link: "https://en.wikipedia.org/wiki/Aubrey_de_Grey",
     text: "Shchepinov is a true biomedical groundbreaker. His insight, now dating back over 20 years, that the isotope effect might have medical utility was so outlandish that even I was initially inclined to dismiss it. How glad I am that I put my doubts aside! In this book, Shchepinov presents the idea and its development in a form that should be easily digestible. Its time has come!"
   },
   {
     name: "Barry Halliwell",
     role: "Chairman, Biomedical Advisory Council (BMAC), A*STAR",
     image: "https://i.ibb.co/LD9hNdhx/Barry-Halliwell.jpg",
+    link: "https://en.wikipedia.org/wiki/Barry_Halliwell",
     text: "Lipid peroxidation is a fundamental mechanism of oxidative damage that has been studied for over 100 years. The recent discovery of ferroptosis has re-awakened interest in iron and lipid peroxidation. In this amusing, provocative and sometimes iconoclastic book, Misha Shchepinov explores the role of fatty acids. It is a good read, I recommend it."
   },
   {
     name: "Charles R. Cantor",
     role: "American molecular geneticist, CSO at Sequenom",
     image: "https://i.ibb.co/pjd3LLQy/Charles-Cantor.jpg",
+    link: "https://en.wikipedia.org/wiki/Charles_Cantor",
     text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise."
   },
   {
     name: "J. Thomas Brenna",
     role: "Ph.D., Professor of Pediatrics, Chemistry, and Human Nutrition",
-    image: "https://i.ibb.co/5D5rYgL/Thomas-Brenna.avif", 
+    image: "https://i.ibb.co/5D5rYgL/Thomas-Brenna.avif",
+    link: "https://en.wikipedia.org/wiki/Tom_Brenna", 
     text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach."
   }
 ];
@@ -69,28 +75,6 @@ const chapters = [
     desc: "The Solution: The Kinetic Isotope Effect explained. How replacing hydrogen with Deuterium (heavy hydrogen) in PUFAs creates unbreaking bonds, effectively stopping the chain reaction and preventing mitochondrial dysfunction." 
   }
 ];
-
-// --- SCHEMA.ORG (ПАСПОРТ КНИГИ ДЛЯ GOOGLE) ---
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Book',
-  name: 'Breaking the Chains of Aging',
-  author: {
-    '@type': 'Person',
-    name: 'Mikhail S. Shchepinov',
-    jobTitle: 'PhD in Bioorganic Chemistry'
-  },
-  isbn: '978-1742535821',
-  description: 'Oxygen fuels our bodies with life-giving energy — but at a hidden cost. Discover the new scientific paradigm of Lipid Peroxidation and the Isotope Effect.',
-  image: 'https://i.ibb.co/QFBzgZ6K/71uv-J6-U35-JL-SL1360.jpg',
-  offers: {
-    '@type': 'Offer',
-    price: '35.00',
-    priceCurrency: 'USD',
-    availability: 'https://schema.org/InStock',
-    url: AMAZON_LINK
-  }
-};
 
 // --- КОМПОНЕНТЫ ---
 
@@ -142,11 +126,6 @@ const WikiLink = ({ href, children }: { href: string, children: React.ReactNode 
 export default function BookWebsite() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-slate-800 font-sans selection:bg-blue-100">
-      {/* Вставка скрытых данных для Google */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       
       {/* HEADER */}
       <header className="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 z-50 shadow-sm transition-all">
@@ -164,15 +143,25 @@ export default function BookWebsite() {
               <a href="#contact" className="hover:text-blue-800 transition">Ask Author</a>
             </nav>
 
-            {/* HEADER BUTTON */}
-            <a 
-              href={AMAZON_LINK} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hidden md:flex bg-blue-900 text-white px-5 py-2.5 rounded-sm font-medium hover:bg-blue-800 transition items-center gap-2 text-sm shadow-md"
-            >
-              <ShoppingCart size={16} /> Buy on Amazon
-            </a>
+            {/* HEADER BUTTONS */}
+            <div className="hidden md:flex items-center gap-3">
+              <a 
+                href={PDF_LINK} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-900 font-bold text-xs uppercase hover:underline"
+              >
+                Buy PDF
+              </a>
+              <a 
+                href={AMAZON_LINK} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-blue-900 text-white px-5 py-2.5 rounded-sm font-medium hover:bg-blue-800 transition items-center gap-2 text-sm shadow-md flex"
+              >
+                <ShoppingCart size={16} /> Buy on Amazon
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -192,6 +181,8 @@ export default function BookWebsite() {
               Oxygen fuels our bodies with life-giving energy — but at a hidden cost. 
               Discover the new scientific paradigm of <b>Lipid Peroxidation</b> and the <b>Isotope Effect</b>.
             </p>
+            
+            {/* HERO BUTTONS */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
                 href={AMAZON_LINK}
@@ -201,9 +192,16 @@ export default function BookWebsite() {
               >
                 <ShoppingCart size={20} /> Order on Amazon
               </a>
-              <button className="border border-slate-300 px-8 py-4 rounded-sm font-medium hover:bg-white transition flex items-center justify-center gap-2">
-                <BookOpen size={20} /> Read Chapter 1
-              </button>
+              
+              {/* PDF BUTTON */}
+              <a
+                 href={PDF_LINK}
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="border border-slate-300 text-slate-700 px-8 py-4 rounded-sm font-medium hover:bg-slate-50 transition flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <Download size={20} /> Buy PDF Version
+              </a>
             </div>
           </div>
           
@@ -355,7 +353,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS (С КЛИКАБЕЛЬНЫМИ ИМЕНАМИ) */}
       <Section title="Praise for the Book" id="reviews" className="bg-slate-50">
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
           {testimonials.map((t, idx) => (
@@ -367,7 +365,9 @@ export default function BookWebsite() {
                   className="w-20 h-20 rounded-full object-cover border-4 border-slate-100 shadow-sm flex-shrink-0 bg-slate-200"
                 />
                 <div>
-                  <h4 className="font-serif font-bold text-slate-900 text-lg leading-tight">{t.name}</h4>
+                  <a href={t.link} target="_blank" rel="noopener noreferrer" className="hover:text-blue-800 hover:underline transition-colors decoration-blue-800/30 underline-offset-4">
+                    <h4 className="font-serif font-bold text-slate-900 text-lg leading-tight">{t.name}</h4>
+                  </a>
                   <p className="text-xs text-blue-800 uppercase tracking-widest font-medium mt-2 leading-relaxed opacity-80">{t.role}</p>
                 </div>
               </div>
