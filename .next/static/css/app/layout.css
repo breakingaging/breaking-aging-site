@@ -1059,6 +1059,10 @@ video {
 .border-slate-700\/30 {
   border-color: rgb(51 65 85 / 0.3);
 }
+.border-blue-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(191 219 254 / var(--tw-border-opacity));
+}
 .bg-\[\#FAFAFA\] {
   --tw-bg-opacity: 1;
   background-color: rgb(250 250 250 / var(--tw-bg-opacity));

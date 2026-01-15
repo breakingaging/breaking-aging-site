@@ -79,10 +79,11 @@ const chapters = [
 
 // --- КОМПОНЕНТЫ ---
 
-const Section = ({ title, children, className = "", id = "", isDark = false }: { title: string, children: React.ReactNode, className?: string, id?: string, isDark?: boolean }) => (
+// Обновленный компонент Section: добавлен параметр centerTitle
+const Section = ({ title, children, className = "", id = "", isDark = false, centerTitle = false }: { title: string, children: React.ReactNode, className?: string, id?: string, isDark?: boolean, centerTitle?: boolean }) => (
   <section id={id} className={`py-20 px-6 md:px-20 ${className}`}>
     <div className="max-w-6xl mx-auto">
-      <h2 className={`text-3xl md:text-4xl font-serif mb-12 border-b pb-4 ${isDark ? 'text-white border-slate-700' : 'text-slate-900 border-slate-200'}`}>
+      <h2 className={`text-3xl md:text-4xl font-serif mb-12 border-b pb-4 ${isDark ? 'text-white border-slate-700' : 'text-slate-900 border-slate-200'} ${centerTitle ? 'text-center' : ''}`}>
         {title}
       </h2>
       {children}
@@ -164,7 +165,6 @@ export default function BookWebsite() {
       <section id="book" className="pt-40 pb-20 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            {/* UPDATED BADGE */}
             <span className="inline-block px-3 py-1 bg-blue-100 text-blue-900 text-xs font-bold tracking-widest uppercase mb-6 rounded-full border border-blue-200">
               A BIOCHEMICAL DRAMA
             </span>
@@ -395,7 +395,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* AUTHOR SECTION */}
+      {/* AUTHOR SECTION (DARK MODE FIXED) */}
       <Section title="About the Author" id="author" className="bg-slate-900" isDark={true}>
         <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
           <div className="w-48 h-48 md:w-56 md:h-56 bg-slate-800 rounded-full flex-shrink-0 border-4 border-slate-600 overflow-hidden shadow-2xl">
@@ -438,7 +438,7 @@ export default function BookWebsite() {
       </Section>
 
       {/* ASK AUTHOR SECTION (CENTERED) */}
-      <Section title="Ask Dr. Shchepinov a Question" id="contact" className="bg-white">
+      <Section title="Ask Dr. Shchepinov a Question" id="contact" className="bg-white" centerTitle={true}>
         <div className="max-w-3xl mx-auto">
            <div className="bg-slate-50 p-10 rounded-lg border border-slate-200 shadow-sm flex flex-col items-center text-center">
              <MessageCircle size={48} className="text-blue-900 mb-6 opacity-20" />
