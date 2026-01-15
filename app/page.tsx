@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, PlayCircle, Mail, MessageCircle, Download, ExternalLink } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, PlayCircle, Mail, MessageCircle, Download, ExternalLink, FileText } from 'lucide-react';
 
 // --- ССЫЛКИ ---
 const AMAZON_LINK = "https://www.amazon.com/Breaking-Chains-Aging-biochemical-drama/dp/1913460975";
@@ -187,7 +187,7 @@ export default function BookWebsite() {
                 <ShoppingCart size={20} /> Buy on Amazon
               </a>
               
-              {/* PDF BUTTON (Hidden for now/Example) */}
+              {/* PDF BUTTON (Hidden for now) */}
               {/* 
               <a
                  href={PDF_LINK}
@@ -420,7 +420,24 @@ export default function BookWebsite() {
               in <b>Oxford, UK</b> and <b>San Diego, USA</b>, and is currently affiliated with several universities. 
               His area of interest is the chemistry of aging and mitigation of age-related diseases.
             </p>
-            <p className="text-slate-400 text-sm italic">
+            
+            {/* PUBMED LINK (NEW) */}
+            <div className="mt-6 pt-6 border-t border-slate-700/30">
+              <a 
+                href="https://pubmed.ncbi.nlm.nih.gov/?term=shchepinov&sort=date&size=100"
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors group"
+              >
+                <FileText size={20} />
+                <span className="font-medium decoration-1 underline-offset-4 group-hover:underline">
+                  View Full List of Scientific Publications (PubMed)
+                </span>
+                <ExternalLink size={14} className="opacity-50" />
+              </a>
+            </div>
+
+            <p className="text-slate-400 text-sm italic mt-6">
               Drawing on 3 decades of experience in academia and commerce.
             </p>
           </div>
