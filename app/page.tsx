@@ -1,26 +1,27 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, PlayCircle, Mail, MessageCircle, Download } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, ShoppingCart, Quote, CheckCircle2, PlayCircle, Mail, MessageCircle, Download, ExternalLink } from 'lucide-react';
 
 // --- ССЫЛКИ ---
 const AMAZON_LINK = "https://www.amazon.com/Breaking-Chains-Aging-biochemical-drama/dp/1913460975";
-// Ссылка на PDF (пока заглушка, позже заменим на Lemon Squeezy)
 const PDF_LINK = "#"; 
 
 // --- ДАННЫЕ: ВИДЕО ---
 const videos = [
   {
     title: "Presenting at Undoing Aging",
-    id: "JUZBOueVkEM"
+    id: "JUZBOueVkEM",
+    desc: "Dr. Shchepinov presents the core thesis: how deuterated nutrients can strengthen cellular bonds and combat age-related damage."
   },
   {
     title: "GoldLab Symposium 2019",
-    id: "T-kC-CojSec" 
+    id: "T-kC-CojSec",
+    desc: "A deep dive into the chemistry of free radicals and how the kinetic isotope effect serves as a shield against oxidation."
   }
 ];
 
-// --- ДАННЫЕ: ОТЗЫВЫ (С ССЫЛКАМИ) ---
+// --- ДАННЫЕ: ОТЗЫВЫ ---
 const testimonials = [
   {
     name: "Aubrey D.N.J. de Grey",
@@ -78,10 +79,10 @@ const chapters = [
 
 // --- КОМПОНЕНТЫ ---
 
-const Section = ({ title, children, className = "", id = "" }: { title: string, children: React.ReactNode, className?: string, id?: string }) => (
+const Section = ({ title, children, className = "", id = "", isDark = false }: { title: string, children: React.ReactNode, className?: string, id?: string, isDark?: boolean }) => (
   <section id={id} className={`py-20 px-6 md:px-20 ${className}`}>
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-serif text-slate-900 mb-12 border-b pb-4 border-slate-200">
+      <h2 className={`text-3xl md:text-4xl font-serif mb-12 border-b pb-4 ${isDark ? 'text-white border-slate-700' : 'text-slate-900 border-slate-200'}`}>
         {title}
       </h2>
       {children}
@@ -135,24 +136,17 @@ export default function BookWebsite() {
           </div>
           
           <div className="flex items-center gap-8">
-            <nav className="hidden md:flex space-x-6 text-xs font-bold text-slate-500 uppercase tracking-widest">
+            <nav className="hidden md:flex space-x-6 text-xs font-bold text-slate-500 uppercase tracking-widest items-center">
               <a href="#book" className="hover:text-blue-800 transition">The Book</a>
               <a href="#prologue" className="hover:text-blue-800 transition">Prologue</a>
               <a href="#concepts" className="hover:text-blue-800 transition">Concepts</a>
               <a href="#videos" className="hover:text-blue-800 transition">Videos</a>
+              <a href="#reviews" className="hover:text-blue-800 transition">Praise</a>
               <a href="#contact" className="hover:text-blue-800 transition">Ask Author</a>
             </nav>
 
-            {/* HEADER BUTTONS */}
+            {/* HEADER BUTTON */}
             <div className="hidden md:flex items-center gap-3">
-              <a 
-                href={PDF_LINK} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-blue-900 font-bold text-xs uppercase hover:underline"
-              >
-                Buy PDF
-              </a>
               <a 
                 href={AMAZON_LINK} 
                 target="_blank" 
@@ -190,10 +184,11 @@ export default function BookWebsite() {
                 rel="noopener noreferrer"
                 className="bg-slate-900 text-white px-8 py-4 rounded-sm font-medium hover:bg-blue-900 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer"
               >
-                <ShoppingCart size={20} /> Order on Amazon
+                <ShoppingCart size={20} /> Buy on Amazon
               </a>
               
-              {/* PDF BUTTON */}
+              {/* PDF BUTTON (Hidden for now/Example) */}
+              {/* 
               <a
                  href={PDF_LINK}
                  target="_blank" 
@@ -202,6 +197,7 @@ export default function BookWebsite() {
               >
                 <Download size={20} /> Buy PDF Version
               </a>
+              */}
             </div>
           </div>
           
@@ -327,8 +323,8 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* VIDEOS & LECTURES */}
-      <Section title="Lectures & Interviews" id="videos" className="bg-slate-900 text-white">
+      {/* VIDEOS & LECTURES (DARK MODE FIXED) */}
+      <Section title="Lectures & Interviews" id="videos" className="bg-slate-900" isDark={true}>
         <div className="grid md:grid-cols-2 gap-10">
           {videos.map((video, idx) => (
             <div key={idx} className="group">
@@ -344,16 +340,19 @@ export default function BookWebsite() {
                   className="absolute inset-0"
                 ></iframe>
               </div>
-              <h4 className="text-lg font-serif text-slate-200 flex items-center gap-3">
-                 <PlayCircle size={20} className="text-blue-400" />
+              <h4 className="text-xl font-serif text-white flex items-center gap-3 mb-2">
+                 <PlayCircle size={24} className="text-blue-400" />
                  {video.title}
               </h4>
+              <p className="text-slate-400 text-sm leading-relaxed pl-9">
+                {video.desc}
+              </p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* TESTIMONIALS (С КЛИКАБЕЛЬНЫМИ ИМЕНАМИ) */}
+      {/* TESTIMONIALS (UPDATED LINKS VISUALS) */}
       <Section title="Praise for the Book" id="reviews" className="bg-slate-50">
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
           {testimonials.map((t, idx) => (
@@ -365,8 +364,16 @@ export default function BookWebsite() {
                   className="w-20 h-20 rounded-full object-cover border-4 border-slate-100 shadow-sm flex-shrink-0 bg-slate-200"
                 />
                 <div>
-                  <a href={t.link} target="_blank" rel="noopener noreferrer" className="hover:text-blue-800 hover:underline transition-colors decoration-blue-800/30 underline-offset-4">
-                    <h4 className="font-serif font-bold text-slate-900 text-lg leading-tight">{t.name}</h4>
+                  <a 
+                    href={t.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="group flex items-center gap-2 w-fit"
+                  >
+                    <h4 className="font-serif font-bold text-blue-900 text-lg leading-tight underline decoration-blue-900/20 underline-offset-4 group-hover:decoration-blue-900 transition-all">
+                      {t.name}
+                    </h4>
+                    <ExternalLink size={14} className="text-blue-900/40 group-hover:text-blue-900 transition-colors" />
                   </a>
                   <p className="text-xs text-blue-800 uppercase tracking-widest font-medium mt-2 leading-relaxed opacity-80">{t.role}</p>
                 </div>
@@ -395,8 +402,8 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* AUTHOR SECTION */}
-      <Section title="About the Author" id="author" className="bg-slate-900 text-slate-200">
+      {/* AUTHOR SECTION (DARK MODE FIXED) */}
+      <Section title="About the Author" id="author" className="bg-slate-900" isDark={true}>
         <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
           <div className="w-48 h-48 md:w-56 md:h-56 bg-slate-800 rounded-full flex-shrink-0 border-4 border-slate-600 overflow-hidden shadow-2xl">
             <img 
