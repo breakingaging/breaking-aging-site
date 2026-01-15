@@ -164,8 +164,9 @@ export default function BookWebsite() {
       <section id="book" className="pt-40 pb-20 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-900 text-xs font-bold tracking-widest uppercase mb-6 rounded-full">
-              Biochemical Drama
+            {/* UPDATED BADGE */}
+            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-900 text-xs font-bold tracking-widest uppercase mb-6 rounded-full border border-blue-200">
+              A BIOCHEMICAL DRAMA
             </span>
             <h1 className="text-5xl md:text-6xl font-serif text-slate-900 leading-tight mb-6">
               Breaking the Chains <br/>
@@ -187,17 +188,9 @@ export default function BookWebsite() {
                 <ShoppingCart size={20} /> Buy on Amazon
               </a>
               
-              {/* PDF BUTTON (Hidden for now) */}
-              {/* 
-              <a
-                 href={PDF_LINK}
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="border border-slate-300 text-slate-700 px-8 py-4 rounded-sm font-medium hover:bg-slate-50 transition flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Download size={20} /> Buy PDF Version
-              </a>
-              */}
+              <button className="border border-slate-300 px-8 py-4 rounded-sm font-medium hover:bg-white transition flex items-center justify-center gap-2">
+                <BookOpen size={20} /> Read Chapter 1
+              </button>
             </div>
           </div>
           
@@ -323,7 +316,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* VIDEOS & LECTURES (DARK MODE FIXED) */}
+      {/* VIDEOS & LECTURES */}
       <Section title="Lectures & Interviews" id="videos" className="bg-slate-900" isDark={true}>
         <div className="grid md:grid-cols-2 gap-10">
           {videos.map((video, idx) => (
@@ -352,7 +345,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* TESTIMONIALS (UPDATED LINKS VISUALS) */}
+      {/* TESTIMONIALS */}
       <Section title="Praise for the Book" id="reviews" className="bg-slate-50">
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
           {testimonials.map((t, idx) => (
@@ -402,7 +395,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* AUTHOR SECTION (DARK MODE FIXED) */}
+      {/* AUTHOR SECTION */}
       <Section title="About the Author" id="author" className="bg-slate-900" isDark={true}>
         <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
           <div className="w-48 h-48 md:w-56 md:h-56 bg-slate-800 rounded-full flex-shrink-0 border-4 border-slate-600 overflow-hidden shadow-2xl">
@@ -421,7 +414,7 @@ export default function BookWebsite() {
               His area of interest is the chemistry of aging and mitigation of age-related diseases.
             </p>
             
-            {/* PUBMED LINK (NEW) */}
+            {/* PUBMED LINK */}
             <div className="mt-6 pt-6 border-t border-slate-700/30">
               <a 
                 href="https://pubmed.ncbi.nlm.nih.gov/?term=shchepinov&sort=date&size=100"
@@ -444,11 +437,11 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* ASK AUTHOR SECTION */}
+      {/* ASK AUTHOR SECTION (CENTERED) */}
       <Section title="Ask Dr. Shchepinov a Question" id="contact" className="bg-white">
-        <div className="max-w-3xl mx-auto text-center">
-           <div className="bg-slate-50 p-10 rounded-lg border border-slate-200 shadow-sm">
-             <MessageCircle size={48} className="text-blue-900 mx-auto mb-6 opacity-20" />
+        <div className="max-w-3xl mx-auto">
+           <div className="bg-slate-50 p-10 rounded-lg border border-slate-200 shadow-sm flex flex-col items-center text-center">
+             <MessageCircle size={48} className="text-blue-900 mb-6 opacity-20" />
              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                Dr. Shchepinov welcomes questions from the scientific community and interested readers regarding 
                Deuterium, Lipid Peroxidation, and the chemistry of aging.
