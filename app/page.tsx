@@ -396,7 +396,7 @@ export default function BookWebsite() {
         <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
           <div className="w-48 h-48 md:w-56 md:h-56 bg-slate-800 rounded-full flex-shrink-0 border-4 border-slate-600 overflow-hidden shadow-2xl">
             <img 
-              src="https://i.ibb.co/PGN5Nx6m/photo-2021-03-02-16-02-58-768x797.jpg" 
+              src="https://i.ibb.co/DgDrN8vs/Mikhail-Shepinov.jpg" 
               alt="Mikhail Shchepinov" 
               className="w-full h-full object-cover" 
             />
