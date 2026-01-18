@@ -21,35 +21,32 @@ const videos = [
   }
 ];
 
-// --- ДАННЫЕ: ОТЗЫВЫ ---
+// --- ДАННЫЕ: ОТЗЫВЫ (PO ALPHABET & NO BIO) ---
+// Порядок: Brenna -> Cantor -> de Grey -> Halliwell
 const testimonials = [
   {
+    name: "J. Thomas Brenna",
+    image: "https://i.ibb.co/5D5rYgL/Thomas-Brenna.avif",
+    link: "https://en.wikipedia.org/wiki/Tom_Brenna", 
+    text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach."
+  },
+  {
+    name: "Charles R. Cantor",
+    image: "https://i.ibb.co/pjd3LLQy/Charles-Cantor.jpg",
+    link: "https://en.wikipedia.org/wiki/Charles_Cantor",
+    text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise."
+  },
+  {
     name: "Aubrey D.N.J. de Grey",
-    role: "Ph.D., Chairman and Chief Science Officer of the Methuselah Foundation",
     image: "https://i.ibb.co/tp67mR8B/Aubreyde-Grey.jpg",
     link: "https://en.wikipedia.org/wiki/Aubrey_de_Grey",
     text: "Shchepinov is a true biomedical groundbreaker. His insight, now dating back over 20 years, that the isotope effect might have medical utility was so outlandish that even I was initially inclined to dismiss it. How glad I am that I put my doubts aside! In this book, Shchepinov presents the idea and its development in a form that should be easily digestible. Its time has come!"
   },
   {
     name: "Barry Halliwell",
-    role: "Chairman, Biomedical Advisory Council (BMAC), A*STAR",
     image: "https://i.ibb.co/LD9hNdhx/Barry-Halliwell.jpg",
     link: "https://en.wikipedia.org/wiki/Barry_Halliwell",
     text: "Lipid peroxidation is a fundamental mechanism of oxidative damage that has been studied for over 100 years. The recent discovery of ferroptosis has re-awakened interest in iron and lipid peroxidation. In this amusing, provocative and sometimes iconoclastic book, Misha Shchepinov explores the role of fatty acids. It is a good read, I recommend it."
-  },
-  {
-    name: "Charles R. Cantor",
-    role: "American molecular geneticist, CSO at Sequenom",
-    image: "https://i.ibb.co/pjd3LLQy/Charles-Cantor.jpg",
-    link: "https://en.wikipedia.org/wiki/Charles_Cantor",
-    text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise."
-  },
-  {
-    name: "J. Thomas Brenna",
-    role: "Ph.D., Professor of Pediatrics, Chemistry, and Human Nutrition",
-    image: "https://i.ibb.co/5D5rYgL/Thomas-Brenna.avif",
-    link: "https://en.wikipedia.org/wiki/Tom_Brenna", 
-    text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach."
   }
 ];
 
@@ -79,7 +76,6 @@ const chapters = [
 
 // --- КОМПОНЕНТЫ ---
 
-// Обновленный компонент Section: добавлен параметр centerTitle
 const Section = ({ title, children, className = "", id = "", isDark = false, centerTitle = false }: { title: string, children: React.ReactNode, className?: string, id?: string, isDark?: boolean, centerTitle?: boolean }) => (
   <section id={id} className={`py-20 px-6 md:px-20 ${className}`}>
     <div className="max-w-6xl mx-auto">
@@ -345,7 +341,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS (CLEAN & SORTED) */}
       <Section title="Praise for the Book" id="reviews" className="bg-slate-50">
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
           {testimonials.map((t, idx) => (
@@ -368,7 +364,7 @@ export default function BookWebsite() {
                     </h4>
                     <ExternalLink size={14} className="text-blue-900/40 group-hover:text-blue-900 transition-colors" />
                   </a>
-                  <p className="text-xs text-blue-800 uppercase tracking-widest font-medium mt-2 leading-relaxed opacity-80">{t.role}</p>
+                  {/* Bio Removed as requested */}
                 </div>
               </div>
               <div className="relative">
@@ -395,12 +391,12 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* AUTHOR SECTION (DARK MODE FIXED) */}
+      {/* AUTHOR SECTION */}
       <Section title="About the Author" id="author" className="bg-slate-900" isDark={true}>
         <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
           <div className="w-48 h-48 md:w-56 md:h-56 bg-slate-800 rounded-full flex-shrink-0 border-4 border-slate-600 overflow-hidden shadow-2xl">
             <img 
-              src="https://i.ibb.co/DgDrN8vs/Mikhail-Shepinov.jpg" 
+              src="https://i.ibb.co/PGN5Nx6m/photo-2021-03-02-16-02-58-768x797.jpg" 
               alt="Mikhail Shchepinov" 
               className="w-full h-full object-cover" 
             />
@@ -437,13 +433,13 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* ASK AUTHOR SECTION (CENTERED) */}
-      <Section title="Ask Dr. Shchepinov a Question" id="contact" className="bg-white" centerTitle={true}>
+      {/* ASK AUTHOR SECTION (UPDATED TITLE/TEXT) */}
+      <Section title="Ask a Question" id="contact" className="bg-white" centerTitle={true}>
         <div className="max-w-3xl mx-auto">
            <div className="bg-slate-50 p-10 rounded-lg border border-slate-200 shadow-sm flex flex-col items-center text-center">
              <MessageCircle size={48} className="text-blue-900 mb-6 opacity-20" />
              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-               Dr. Shchepinov welcomes questions from the scientific community and interested readers regarding 
+               We welcome questions from the scientific community and interested readers regarding 
                Deuterium, Lipid Peroxidation, and the chemistry of aging.
              </p>
              <a 
