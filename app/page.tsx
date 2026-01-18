@@ -21,21 +21,8 @@ const videos = [
   }
 ];
 
-// --- ДАННЫЕ: ОТЗЫВЫ (PO ALPHABET & NO BIO) ---
-// Порядок: Brenna -> Cantor -> de Grey -> Halliwell
+// --- ДАННЫЕ: ОТЗЫВЫ ---
 const testimonials = [
-  {
-    name: "J. Thomas Brenna",
-    image: "https://i.ibb.co/5D5rYgL/Thomas-Brenna.avif",
-    link: "https://en.wikipedia.org/wiki/Tom_Brenna", 
-    text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach."
-  },
-  {
-    name: "Charles R. Cantor",
-    image: "https://i.ibb.co/pjd3LLQy/Charles-Cantor.jpg",
-    link: "https://en.wikipedia.org/wiki/Charles_Cantor",
-    text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise."
-  },
   {
     name: "Aubrey D.N.J. de Grey",
     image: "https://i.ibb.co/tp67mR8B/Aubreyde-Grey.jpg",
@@ -47,6 +34,18 @@ const testimonials = [
     image: "https://i.ibb.co/LD9hNdhx/Barry-Halliwell.jpg",
     link: "https://en.wikipedia.org/wiki/Barry_Halliwell",
     text: "Lipid peroxidation is a fundamental mechanism of oxidative damage that has been studied for over 100 years. The recent discovery of ferroptosis has re-awakened interest in iron and lipid peroxidation. In this amusing, provocative and sometimes iconoclastic book, Misha Shchepinov explores the role of fatty acids. It is a good read, I recommend it."
+  },
+  {
+    name: "Charles R. Cantor",
+    image: "https://i.ibb.co/pjd3LLQy/Charles-Cantor.jpg",
+    link: "https://en.wikipedia.org/wiki/Charles_Cantor",
+    text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise."
+  },
+  {
+    name: "J. Thomas Brenna",
+    image: "https://i.ibb.co/5D5rYgL/Thomas-Brenna.avif",
+    link: "https://en.wikipedia.org/wiki/Tom_Brenna", 
+    text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach."
   }
 ];
 
@@ -107,18 +106,6 @@ const AccordionItem = ({ title, desc }: { title: string, desc: string }) => {
   );
 };
 
-const WikiLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
-  <a 
-    href={href} 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="text-blue-700 underline decoration-1 underline-offset-2 hover:text-blue-900 hover:bg-blue-50 transition-colors"
-    title="Read more on Wikipedia"
-  >
-    {children}
-  </a>
-);
-
 // --- ГЛАВНАЯ СТРАНИЦА ---
 
 export default function BookWebsite() {
@@ -135,7 +122,8 @@ export default function BookWebsite() {
           <div className="flex items-center gap-8">
             <nav className="hidden md:flex space-x-6 text-xs font-bold text-slate-500 uppercase tracking-widest items-center">
               <a href="#book" className="hover:text-blue-800 transition">The Book</a>
-              <a href="#prologue" className="hover:text-blue-800 transition">Prologue</a>
+              {/* Ссылка на новую страницу Explore */}
+              <a href="/explore" className="hover:text-blue-800 transition">Explore Topics</a>
               <a href="#concepts" className="hover:text-blue-800 transition">Concepts</a>
               <a href="#videos" className="hover:text-blue-800 transition">Videos</a>
               <a href="#reviews" className="hover:text-blue-800 transition">Praise</a>
@@ -203,57 +191,6 @@ export default function BookWebsite() {
           </div>
         </div>
       </section>
-
-      {/* PROLOGUE */}
-      <Section title="Chain reaction of lipid peroxidation is everywhere" id="prologue" className="bg-stone-50">
-        <div className="prose prose-lg prose-slate max-w-none font-serif leading-loose">
-          <p>
-            At a BBQ party in Texas, you drizzle a little <WikiLink href="https://en.wikipedia.org/wiki/Vegetable_oil">vegetable oil</WikiLink> into 
-            a salad bowl, but, distracted by a burst of laughter, leave the uncapped bottle on the table. 
-            The party is such a success that the cleanup only starts three days later in the evening, 
-            as the punishing Texan sun loosens its grip.
-          </p>
-          <p>
-            The <WikiLink href="https://en.wikipedia.org/wiki/Rancidification">rancid</WikiLink> stench 
-            now rising from the bottle is so vile that even your dog recoils in disgust. The oil seems 
-            not to have taken the sun and air at all well. You pick a screwcap and seal the bottle tight, with relief.
-          </p>
-          <p>
-            Let’s relocate into a Flemish painter’s studio, 1525 AD. Vivid pigments are ground 
-            into <WikiLink href="https://en.wikipedia.org/wiki/Linseed_oil">flax oil</WikiLink> and 
-            brushed onto canvas. Within days the air oxidizes the oil into a <WikiLink href="https://en.wikipedia.org/wiki/Drying_oil">hard lacquer layer</WikiLink>, 
-            locking the fine colourful grains in place for centuries. Fast-forward 500 years, and 
-            audiences are still spellbound by the panorama of <WikiLink href="https://en.wikipedia.org/wiki/View_of_Delft">Delft embankment</WikiLink>, 
-            or by the thin ribbon of milk suspended forever in mid-pour from a <WikiLink href="https://en.wikipedia.org/wiki/The_Milkmaid_(Vermeer)">milkmaid’s jug</WikiLink>, 
-            all courtesy of this oxidation process preserving colours.
-          </p>
-          <hr className="w-16 h-1 bg-blue-900 my-8 opacity-20 mx-auto border-none" />
-          <p>
-            “Oil” and “air” are the common topics in this transition from Texas to Old Masters. 
-            Many types of oil readily oxidise in air, and herein lies the biological problem. 
-            Every cell in our body, and multiple compartments inside of those cells have elaborate 
-            barrier structures, called <WikiLink href="https://en.wikipedia.org/wiki/Cell_membrane">lipid membranes</WikiLink>, 
-            built of such oxidisable lipid molecules, referred to as <WikiLink href="https://en.wikipedia.org/wiki/Polyunsaturated_fat">omega-3 and omega-6</WikiLink>. 
-            And most cells in our body handle oxygen (<WikiLink href="https://en.wikipedia.org/wiki/Cellular_respiration">respiration</WikiLink>). 
-            So, what happened to that bottle of oil, and to the painting, also happens to us all the time: <WikiLink href="https://en.wikipedia.org/wiki/Lipid_peroxidation">Lipid Peroxidation</WikiLink>.
-          </p>
-          <p>
-            Of the <WikiLink href="https://en.wikipedia.org/wiki/Estimates_of_historical_world_population">100 billion people</WikiLink> who 
-            ever lived on this planet, only the ones killed in battle or accident did not see oxygen play a prominent role in their demise. 
-            Oxygen can oxidise whole planets — just look at <WikiLink href="https://en.wikipedia.org/wiki/Geological_history_of_Mars">Mars</WikiLink>. 
-            What chance do tiny cells, choke-full of “flammable” biomolecules, have to resist it?
-          </p>
-          <p>
-            They try their best – there is an arsenal of <WikiLink href="https://en.wikipedia.org/wiki/Antioxidant">antioxidants</WikiLink>, 
-            multiple <WikiLink href="https://en.wikipedia.org/wiki/Detoxification">detoxifying</WikiLink> enzymes, 
-            and <WikiLink href="https://en.wikipedia.org/wiki/Metabolic_waste">garbage removal</WikiLink> systems. 
-            But there is an insidious side to lipids. Tightly packed in membranes like dominoes, 
-            multiple lipid molecules also <WikiLink href="https://en.wikipedia.org/wiki/Domino_toppling">fall like dominoes</WikiLink>, 
-            when hit with a single <WikiLink href="https://en.wikipedia.org/wiki/Reactive_oxygen_species">activated oxygen molecule</WikiLink>. 
-            This represents the only <WikiLink href="https://en.wikipedia.org/wiki/Chain_reactions_in_living_organisms">non-enzymatic chain reaction in life</WikiLink>.
-          </p>
-        </div>
-      </Section>
 
       {/* KEY CONCEPTS */}
       <Section title="Key Concepts in the Book" className="bg-white" id="concepts">
@@ -341,7 +278,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* TESTIMONIALS (CLEAN & SORTED) */}
+      {/* TESTIMONIALS */}
       <Section title="Praise for the Book" id="reviews" className="bg-slate-50">
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
           {testimonials.map((t, idx) => (
@@ -364,7 +301,6 @@ export default function BookWebsite() {
                     </h4>
                     <ExternalLink size={14} className="text-blue-900/40 group-hover:text-blue-900 transition-colors" />
                   </a>
-                  {/* Bio Removed as requested */}
                 </div>
               </div>
               <div className="relative">
@@ -391,7 +327,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* AUTHOR SECTION */}
+      {/* AUTHOR SECTION (UPDATED PHOTO) */}
       <Section title="About the Author" id="author" className="bg-slate-900" isDark={true}>
         <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
           <div className="w-48 h-48 md:w-56 md:h-56 bg-slate-800 rounded-full flex-shrink-0 border-4 border-slate-600 overflow-hidden shadow-2xl">
@@ -433,7 +369,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* ASK AUTHOR SECTION (UPDATED TITLE/TEXT) */}
+      {/* ASK AUTHOR SECTION */}
       <Section title="Ask a Question" id="contact" className="bg-white" centerTitle={true}>
         <div className="max-w-3xl mx-auto">
            <div className="bg-slate-50 p-10 rounded-lg border border-slate-200 shadow-sm flex flex-col items-center text-center">
