@@ -5,7 +5,7 @@ export default function ExplorePage() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-slate-800 font-sans">
       
-      {/* HEADER (SIMPLE) */}
+      {/* HEADER */}
       <header className="w-full bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-6 h-20 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2 text-slate-500 hover:text-blue-900 transition text-sm font-bold uppercase tracking-widest">
@@ -41,7 +41,7 @@ export default function ExplorePage() {
             </div>
           </a>
 
-          {/* PLACEHOLDER FOR NEXT ARTICLE */}
+          {/* PLACEHOLDER */}
           <div className="border border-dashed border-slate-300 rounded-lg p-8 text-center text-slate-400">
             <p className="italic">More scientific articles coming soon...</p>
           </div>

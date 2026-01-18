@@ -21,8 +21,20 @@ const videos = [
   }
 ];
 
-// --- ДАННЫЕ: ОТЗЫВЫ ---
+// --- ДАННЫЕ: ОТЗЫВЫ (ALPHABETICAL ORDER: B, C, D, H) ---
 const testimonials = [
+  {
+    name: "J. Thomas Brenna",
+    image: "https://i.ibb.co/5D5rYgL/Thomas-Brenna.avif",
+    link: "https://en.wikipedia.org/wiki/Tom_Brenna", 
+    text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach."
+  },
+  {
+    name: "Charles R. Cantor",
+    image: "https://i.ibb.co/pjd3LLQy/Charles-Cantor.jpg",
+    link: "https://en.wikipedia.org/wiki/Charles_Cantor",
+    text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise."
+  },
   {
     name: "Aubrey D.N.J. de Grey",
     image: "https://i.ibb.co/tp67mR8B/Aubreyde-Grey.jpg",
@@ -34,18 +46,6 @@ const testimonials = [
     image: "https://i.ibb.co/LD9hNdhx/Barry-Halliwell.jpg",
     link: "https://en.wikipedia.org/wiki/Barry_Halliwell",
     text: "Lipid peroxidation is a fundamental mechanism of oxidative damage that has been studied for over 100 years. The recent discovery of ferroptosis has re-awakened interest in iron and lipid peroxidation. In this amusing, provocative and sometimes iconoclastic book, Misha Shchepinov explores the role of fatty acids. It is a good read, I recommend it."
-  },
-  {
-    name: "Charles R. Cantor",
-    image: "https://i.ibb.co/pjd3LLQy/Charles-Cantor.jpg",
-    link: "https://en.wikipedia.org/wiki/Charles_Cantor",
-    text: "Food for thought: suppose there were a food supplement that actually protects brain health? Wouldn't taking it be irresistible? This book describes the biology and chemistry that plays a role in many brain diseases. The author of this book, Mikhail Shchepinov, is the inventor of a supplement, deuterated long chain fatty acids, which shows great promise."
-  },
-  {
-    name: "J. Thomas Brenna",
-    image: "https://i.ibb.co/5D5rYgL/Thomas-Brenna.avif",
-    link: "https://en.wikipedia.org/wiki/Tom_Brenna", 
-    text: "With sharp wit and keen insight, my friend Misha takes us on an extraordinary tour through the biochemistry of aging and neurodegeneration. Oxygen — that double-edged sword — sustains our metabolism while simultaneously escaping to wreak havoc. Misha's elegant solution to reinforce these molecules of life offers a brilliant approach."
   }
 ];
 
@@ -122,12 +122,12 @@ export default function BookWebsite() {
           <div className="flex items-center gap-8">
             <nav className="hidden md:flex space-x-6 text-xs font-bold text-slate-500 uppercase tracking-widest items-center">
               <a href="#book" className="hover:text-blue-800 transition">The Book</a>
-              {/* Ссылка на новую страницу Explore */}
+              {/* Ссылка на страницу Explore */}
               <a href="/explore" className="hover:text-blue-800 transition">Explore Topics</a>
               <a href="#concepts" className="hover:text-blue-800 transition">Concepts</a>
               <a href="#videos" className="hover:text-blue-800 transition">Videos</a>
               <a href="#reviews" className="hover:text-blue-800 transition">Praise</a>
-              <a href="#contact" className="hover:text-blue-800 transition">Ask Author</a>
+              <a href="#contact" className="hover:text-blue-800 transition">Ask a Question</a>
             </nav>
 
             {/* HEADER BUTTON */}
@@ -161,7 +161,6 @@ export default function BookWebsite() {
               Discover the new scientific paradigm of <b>Lipid Peroxidation</b> and the <b>Isotope Effect</b>.
             </p>
             
-            {/* HERO BUTTONS */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
                 href={AMAZON_LINK}
@@ -171,7 +170,6 @@ export default function BookWebsite() {
               >
                 <ShoppingCart size={20} /> Buy on Amazon
               </a>
-              
               <button className="border border-slate-300 px-8 py-4 rounded-sm font-medium hover:bg-white transition flex items-center justify-center gap-2">
                 <BookOpen size={20} /> Read Chapter 1
               </button>
@@ -191,6 +189,30 @@ export default function BookWebsite() {
           </div>
         </div>
       </section>
+
+      {/* LATEST ARTICLES (ВМЕСТО ПРОЛОГА) */}
+      <Section title="Explore Topics" className="bg-stone-50" id="explore">
+        <div className="grid md:grid-cols-2 gap-8">
+           {/* Карточка статьи */}
+           <a href="/explore/chain-reaction" className="block group bg-white p-8 rounded border border-slate-200 hover:shadow-lg transition-all">
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-3 block">Prologue</span>
+              <h3 className="text-2xl font-serif text-slate-900 mb-4 group-hover:text-blue-800 transition-colors">
+                Chain reaction of lipid peroxidation is everywhere
+              </h3>
+              <p className="text-slate-600 mb-4 line-clamp-3">
+                From a BBQ party in Texas to Flemish painters studios. Why "oil" and "air" are the common topics in biology and art.
+              </p>
+              <div className="text-blue-800 font-bold text-sm inline-flex items-center gap-1">
+                Read Article <ChevronDown className="rotate-[-90deg]" size={14} />
+              </div>
+           </a>
+           
+           {/* Пустая карточка */}
+           <div className="border-2 border-dashed border-slate-200 rounded p-8 flex items-center justify-center text-slate-400 italic">
+             More scientific articles coming soon...
+           </div>
+        </div>
+      </Section>
 
       {/* KEY CONCEPTS */}
       <Section title="Key Concepts in the Book" className="bg-white" id="concepts">
@@ -327,7 +349,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* AUTHOR SECTION (UPDATED PHOTO) */}
+      {/* AUTHOR SECTION */}
       <Section title="About the Author" id="author" className="bg-slate-900" isDark={true}>
         <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
           <div className="w-48 h-48 md:w-56 md:h-56 bg-slate-800 rounded-full flex-shrink-0 border-4 border-slate-600 overflow-hidden shadow-2xl">
@@ -346,7 +368,6 @@ export default function BookWebsite() {
               His area of interest is the chemistry of aging and mitigation of age-related diseases.
             </p>
             
-            {/* PUBMED LINK */}
             <div className="mt-6 pt-6 border-t border-slate-700/30">
               <a 
                 href="https://pubmed.ncbi.nlm.nih.gov/?term=shchepinov&sort=date&size=100"
@@ -369,7 +390,7 @@ export default function BookWebsite() {
         </div>
       </Section>
 
-      {/* ASK AUTHOR SECTION */}
+      {/* ASK A QUESTION (UPDATED TEXT) */}
       <Section title="Ask a Question" id="contact" className="bg-white" centerTitle={true}>
         <div className="max-w-3xl mx-auto">
            <div className="bg-slate-50 p-10 rounded-lg border border-slate-200 shadow-sm flex flex-col items-center text-center">
